@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Login] (
+    [MID]  INT NOT NULL,
+    [SSID] INT NOT NULL,
+    CONSTRAINT [PK_Login] PRIMARY KEY CLUSTERED ([MID] ASC, [SSID] ASC),
+    CONSTRAINT [FK_Login_MID] FOREIGN KEY ([MID]) REFERENCES [dbo].[Member] ([MID]),
+    CONSTRAINT [FK_Login_SSID] FOREIGN KEY ([SSID]) REFERENCES [dbo].[SystemSession] ([SSID])
+);
+
+
+

@@ -1,0 +1,87 @@
+2022/10/18 上午 10:09:36	This log contains information about the import schema operation into project 'Schema' on computer 'AN990154054' by user '11107063'.
+2022/10/18 上午 10:09:36	Import of database schema has started.
+2022/10/18 上午 10:09:38	Gathering database credentials
+2022/10/18 上午 10:09:38	Gathering database options
+2022/10/18 上午 10:09:38	Gathering generic database scoped configuration option
+2022/10/18 上午 10:09:38	Gathering users
+2022/10/18 上午 10:09:38	Gathering roles
+2022/10/18 上午 10:09:38	Gathering application roles
+2022/10/18 上午 10:09:38	Gathering role memberships
+2022/10/18 上午 10:09:38	Gathering filegroups
+2022/10/18 上午 10:09:38	Gathering full-text catalogs
+2022/10/18 上午 10:09:38	Gathering assemblies
+2022/10/18 上午 10:09:38	Gathering certificates
+2022/10/18 上午 10:09:38	Gathering asymmetric keys
+2022/10/18 上午 10:09:38	Gathering symmetric keys
+2022/10/18 上午 10:09:38	Gathering encrypted symmetric keys
+2022/10/18 上午 10:09:38	Gathering schemas
+2022/10/18 上午 10:09:38	Gathering XML schema collections
+2022/10/18 上午 10:09:38	Gathering user-defined data types
+2022/10/18 上午 10:09:38	Gathering user-defined types
+2022/10/18 上午 10:09:38	Gathering table types
+2022/10/18 上午 10:09:38	Gathering unique keys for table types
+2022/10/18 上午 10:09:38	Gathering primary keys for table types
+2022/10/18 上午 10:09:38	Gathering indexes for table types
+2022/10/18 上午 10:09:38	Gathering check constraints for table types
+2022/10/18 上午 10:09:38	Gathering default constraints for table types
+2022/10/18 上午 10:09:38	Gathering partition functions
+2022/10/18 上午 10:09:38	Gathering partition schemes
+2022/10/18 上午 10:09:38	Gathering functions
+2022/10/18 上午 10:09:38	Gathering encrypted functions
+2022/10/18 上午 10:09:38	Gathering aggregates
+2022/10/18 上午 10:09:38	Gathering procedures
+2022/10/18 上午 10:09:38	Gathering encrypted procedures
+2022/10/18 上午 10:09:38	Gathering tables
+2022/10/18 上午 10:09:38	Gathering primary keys
+2022/10/18 上午 10:09:38	Gathering unique constraints
+2022/10/18 上午 10:09:38	Gathering foreign keys
+2022/10/18 上午 10:09:38	Gathering default constraints
+2022/10/18 上午 10:09:38	Gathering check constraints
+2022/10/18 上午 10:09:38	Gathering views
+2022/10/18 上午 10:09:38	Gathering encrypted views
+2022/10/18 上午 10:09:38	Gathering indexes
+2022/10/18 上午 10:09:38	Gathering statistics
+2022/10/18 上午 10:09:38	Gathering full-text index stoplists
+2022/10/18 上午 10:09:38	Gathering search property lists
+2022/10/18 上午 10:09:38	Gathering search properties
+2022/10/18 上午 10:09:38	Gathering full-text indexes
+2022/10/18 上午 10:09:38	Gathering column store indexes
+2022/10/18 上午 10:09:38	Gathering spatial indexes
+2022/10/18 上午 10:09:38	Gathering XML indexes
+2022/10/18 上午 10:09:38	Gathering Selective XML indexes
+2022/10/18 上午 10:09:38	Gathering encrypted triggers
+2022/10/18 上午 10:09:38	Gathering triggers
+2022/10/18 上午 10:09:38	Gathering encrypted and clr ddl triggers
+2022/10/18 上午 10:09:38	Gathering ddl triggers
+2022/10/18 上午 10:09:38	Creating edge constraints
+2022/10/18 上午 10:09:38	Gathering synonyms
+2022/10/18 上午 10:09:38	Gathering defaults
+2022/10/18 上午 10:09:38	Gathering data constraint uddt bindings
+2022/10/18 上午 10:09:38	Gathering rules
+2022/10/18 上午 10:09:38	Gathering data constraint uddt bindings
+2022/10/18 上午 10:09:38	Gathering message types
+2022/10/18 上午 10:09:38	Gathering queues
+2022/10/18 上午 10:09:38	Gathering contracts
+2022/10/18 上午 10:09:38	Gathering services
+2022/10/18 上午 10:09:38	Gathering event notifications
+2022/10/18 上午 10:09:38	Gathering remote service bindings
+2022/10/18 上午 10:09:38	Gathering broker priorities
+2022/10/18 上午 10:09:38	Gathering signatures
+2022/10/18 上午 10:09:38	Gathering data compression options
+2022/10/18 上午 10:09:38	Gathering sequence types
+2022/10/18 上午 10:09:38	Gathering security policies
+2022/10/18 上午 10:09:38	Gather column encryption keys
+2022/10/18 上午 10:09:38	Gathering column master keys
+2022/10/18 上午 10:09:38	Gathering external data sources
+2022/10/18 上午 10:09:38	Gathering external file formats
+2022/10/18 上午 10:09:38	Gathering external tables
+2022/10/18 上午 10:09:38	Gathering extended properties
+2022/10/18 上午 10:09:39	Gathering assemblies
+2022/10/18 上午 10:09:40	Gathering credentials
+2022/10/18 上午 10:09:40	Gathering logins
+2022/10/18 上午 10:09:40	Gathering server audits
+2022/10/18 上午 10:09:40	Scanning project for duplicate elements
+2022/10/18 上午 10:09:40	Finished duplicate element processing
+2022/10/18 上午 10:09:40	Finished importing database.
+2022/10/18 上午 10:09:40	A summary of the import was saved to the following location: D:\Test\SingleSignOn\Database\Schema\Schema\Import Schema Logs\Schema_20221018020936.log
+2022/10/18 上午 10:09:40	Click Finish to continue...
