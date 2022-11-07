@@ -62,6 +62,7 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Views\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Tag.sql" />
@@ -78,6 +79,13 @@
     <Build Include="dbo\Stored Procedures\xp_refreshToken.sql" />
     <Build Include="dbo\Stored Procedures\xp_MemberRenewPassword.sql" />
     <Build Include="dbo\Stored Procedures\xp_createNewUser.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+    <Build Include="dbo\Views\vd_VerifySession.sql" />
+    <Build Include="dbo\Views\vd_ForgePasswordSession.sql" />
+    <Build Include="dbo\Stored Procedures\xp_PasswordSendVerify.sql" />
+    <Build Include="dbo\Stored Procedures\xp_MemberVerify.sql" />
+    <Build Include="dbo\Stored Procedures\xp_MemberSendVerify.sql" />
+    <Build Include="dbo\Stored Procedures\xp_MemberRenewForgetPassword.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Schema.refactorlog" />

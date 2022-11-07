@@ -1,0 +1,10 @@
+D:\Test\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.dacpac
+D:\Test\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.dll
+D:\Test\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.pdb
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.sqlproj.AssemblyReference.cache
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Model.xml
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\refactor.xml
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\postdeploy.sql
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\predeploy.sql
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.dll
+D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.pdb

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[SystemSession] (
     [SSID]         INT              IDENTITY (1, 1) NOT NULL,
     [Token]        UNIQUEIDENTIFIER NOT NULL,
-    [RefreshToken] UNIQUEIDENTIFIER NOT NULL,
+    [RefreshToken] UNIQUEIDENTIFIER NULL,
     [Since]        DATETIME         DEFAULT (getdate()) NULL,
     [Expire]       INT              NULL,
     [MID]          INT              NULL,
@@ -10,6 +10,8 @@
     CONSTRAINT [FK_SystemSession_MID] FOREIGN KEY ([MID]) REFERENCES [dbo].[Member] ([MID]),
     CONSTRAINT [FK_SystemSession_Type] FOREIGN KEY ([Type]) REFERENCES [dbo].[Tag] ([TID])
 );
+
+
 
 
 
