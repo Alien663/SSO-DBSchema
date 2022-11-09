@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Grants] (
+    [MID] INT NOT NULL,
+    [AID] INT NOT NULL,
+    CONSTRAINT [PK_Grants] PRIMARY KEY CLUSTERED ([MID] ASC, [AID] ASC),
+    CONSTRAINT [FK_Grants_AID] FOREIGN KEY ([AID]) REFERENCES [dbo].[APP] ([AID]),
+    CONSTRAINT [FK_Grants_MID] FOREIGN KEY ([MID]) REFERENCES [dbo].[Member] ([MID])
+);
+

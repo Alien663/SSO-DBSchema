@@ -86,6 +86,7 @@
     <Build Include="dbo\Stored Procedures\xp_MemberVerify.sql" />
     <Build Include="dbo\Stored Procedures\xp_MemberSendVerify.sql" />
     <Build Include="dbo\Stored Procedures\xp_MemberRenewForgetPassword.sql" />
+    <Build Include="dbo\Tables\Grants.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Schema.refactorlog" />
