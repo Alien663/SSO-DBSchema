@@ -87,6 +87,9 @@
     <Build Include="dbo\Stored Procedures\xp_MemberSendVerify.sql" />
     <Build Include="dbo\Stored Procedures\xp_MemberRenewForgetPassword.sql" />
     <Build Include="dbo\Tables\Grants.sql" />
+    <Build Include="dbo\Tables\AuthCode.sql" />
+    <Build Include="dbo\Views\vd_AuthorizationCodeSession.sql" />
+    <Build Include="dbo\Stored Procedures\xp_EndpointLoginWithPassword.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Schema.refactorlog" />
