@@ -8,3 +8,13 @@ D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\postdeploy.sql
 D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\predeploy.sql
 D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.dll
 D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.pdb
+D:\SideProject\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.dacpac
+D:\SideProject\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.dll
+D:\SideProject\SingleSignOn\Database\Schema\Schema\bin\Debug\Schema.pdb
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.sqlproj.AssemblyReference.cache
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\Model.xml
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\refactor.xml
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\postdeploy.sql
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\predeploy.sql
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.dll
+D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.pdb

@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Schema.dll" />
-			<Metadata Name="FileName" Value="D:\TEST\SINGLESIGNON\DATABASE\SCHEMA\SCHEMA\OBJ\DEBUG\SCHEMA.DLL" />
+			<Metadata Name="FileName" Value="D:\SIDEPROJECT\SINGLESIGNON\DATABASE\SCHEMA\SCHEMA\OBJ\DEBUG\SCHEMA.DLL" />
 			<Metadata Name="AssemblyName" Value="Schema" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="D:\Test\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="D:\SideProject\SingleSignOn\Database\Schema\Schema\obj\Debug\Schema.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -50,28 +50,28 @@
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Member]" />
+					<References Name="[dbo].[AuthCode]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[Member].[Since]" />
+					<References Name="[dbo].[AuthCode].[Since]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[(getdate())]]></Value>
+				<Value><![CDATA[((300))]]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Member]" />
+					<References Name="[dbo].[AuthCode]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[Member].[ModifyDate]" />
+					<References Name="[dbo].[AuthCode].[Expire]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
@@ -91,6 +91,38 @@
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[(getdate())]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[Member].[Since]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[(getdate())]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[Member].[ModifyDate]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[APP]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -191,14 +223,213 @@
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[APP].[APIKEY]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[AuthCode]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[AuthCode].[AID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[AuthCode].[SSID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[AuthCode].[AuthorizationCode]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[AuthCode].[Since]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[AuthCode].[Expire]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AuthCode_AID]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[AuthCode].[AID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[AuthCode]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[APP].[AID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[APP]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="11" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AuthCode_SSID]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[AuthCode].[SSID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[AuthCode]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[SystemSession].[SSID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="12" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Grants_AID]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Grants].[AID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Grants]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[APP].[AID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[APP]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Grants_MID]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Grants].[MID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Grants]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Login_MID]">
 			<Relationship Name="Columns">
@@ -221,7 +452,7 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Login_SSID]">
 			<Relationship Name="Columns">
@@ -244,7 +475,7 @@
 					<References Name="[dbo].[SystemSession]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Member_MID]">
 			<Relationship Name="Columns">
@@ -267,7 +498,7 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="7" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_SystemSession_MID]">
 			<Relationship Name="Columns">
@@ -290,7 +521,7 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_SystemSession_Type]">
 			<Relationship Name="Columns">
@@ -313,7 +544,52 @@
 					<References Name="[dbo].[Tag]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Grants]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Grants].[MID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Grants].[AID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+			<AttachedAnnotation Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="14" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Login]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -356,9 +632,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
-			<AttachedAnnotation Disambiguator="8" />
-			<AttachedAnnotation Disambiguator="9" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+			<AttachedAnnotation Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="16" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Member]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -474,7 +750,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="6" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -490,7 +766,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="7" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -514,9 +790,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_APP]">
 			<Relationship Name="ColumnSpecifications">
@@ -535,7 +811,64 @@
 					<References Name="[dbo].[APP]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="6" />
+			<AttachedAnnotation Disambiguator="8" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_AuthCode]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[AuthCode].[AID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Property Name="IsAscending" Value="False" />
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[AuthCode].[SSID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[AuthCode]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="10" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Grants]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Grants].[MID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Grants].[AID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Grants]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="19" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Login]">
 			<Relationship Name="ColumnSpecifications">
@@ -563,7 +896,7 @@
 					<References Name="[dbo].[Login]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="12" />
+			<AttachedAnnotation Disambiguator="20" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Member]">
 			<Relationship Name="ColumnSpecifications">
@@ -582,7 +915,7 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="21" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_SystemSession]">
 			<Relationship Name="ColumnSpecifications">
@@ -601,7 +934,7 @@
 					<References Name="[dbo].[SystemSession]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Tag]">
 			<Relationship Name="ColumnSpecifications">
@@ -620,7 +953,7 @@
 					<References Name="[dbo].[Tag]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[SystemSession]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -660,7 +993,6 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[SystemSession].[RefreshToken]">
-						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -741,9 +1073,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="16" />
-			<AttachedAnnotation Disambiguator="10" />
-			<AttachedAnnotation Disambiguator="11" />
+			<AttachedAnnotation Disambiguator="24" />
+			<AttachedAnnotation Disambiguator="17" />
+			<AttachedAnnotation Disambiguator="18" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Tag]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -803,7 +1135,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="17" />
+			<AttachedAnnotation Disambiguator="25" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_Member_Account]">
 			<Relationship Name="ColumnSpecifications">
@@ -822,7 +1154,7 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="14" />
+			<AttachedAnnotation Disambiguator="22" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_Member_EMail]">
 			<Relationship Name="ColumnSpecifications">
@@ -841,7 +1173,326 @@
 					<References Name="[dbo].[Member]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="23" />
+		</Element>
+		<Element Type="SqlView" Name="[dbo].[vd_AuthorizationCodeSession]">
+			<Property Name="QueryScript">
+				<Value><![CDATA[
+select
+	A.AID, 
+	A.[Name] as AppName,
+	A.[Description] as AppDes,
+	A.[URL] as Domain,
+	A.RedirectURL,
+	A.APIKEY,
+	ACS.AuthorizationCode,
+	DATEADD(s, ACS.Expire, ACS.Since) as AuthorizationCodeExpired,
+	S.SSID,
+	S.Token as AccessToken,
+	DATEADD(s, S.Expire, S.Since) as AccessTokenExpired
+from APP A
+	inner join AuthCode ACS on A.AID = ACS.AID
+	inner join SystemSession S on ACS.SSID = S.SSID]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[AID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AppName]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[Name]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AppDes]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[Description]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[Domain]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[URL]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[RedirectURL]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[RedirectURL]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[APIKEY]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[APP].[APIKEY]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AuthorizationCode]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[AuthCode].[AuthorizationCode]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AuthorizationCodeExpired]" />
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[SSID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[SSID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AccessToken]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[Token]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_AuthorizationCodeSession].[AccessTokenExpired]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="QueryDependencies">
+				<Entry>
+					<References Name="[dbo].[APP]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[AID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[AID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[AID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[URL]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[RedirectURL]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[APP].[APIKEY]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[AuthorizationCode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[Since]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Since]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="463" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;create    view [dbo].[vd_AuthorizationCodeSession]&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlView" Name="[dbo].[vd_ForgePasswordSession]">
+			<Property Name="QueryScript">
+				<Value><![CDATA[
+	select
+		M.MID,
+		M.Solt as [UUID],
+		M.Account,
+		M.EMail,
+		M.Verify,
+		S.SSID,
+		S.Token,
+		DATEADD(ss, S.Expire, S.Since) as Expired
+	from Member M
+		inner join SystemSession S on M.MID = S.MID
+	where S.[Type] = 2]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[MID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[MID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[UUID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Solt]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[Account]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Account]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[EMail]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[EMail]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[Verify]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Verify]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[SSID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[SSID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[Token]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[Token]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_ForgePasswordSession].[Expired]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="QueryDependencies">
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[EMail]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Verify]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Since]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="272" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create   view vd_ForgePasswordSession&#xD;&#xA;as" />
+			</Annotation>
 		</Element>
 		<Element Type="SqlView" Name="[dbo].[vd_LoginSession]">
 			<Property Name="QueryScript">
@@ -1129,6 +1780,157 @@ from Member]]></Value>
 				<Property Name="HeaderContents" Value="&#xD;&#xA;create   view [dbo].[vd_Member]&#xD;&#xA;as" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlView" Name="[dbo].[vd_VerifySession]">
+			<Property Name="QueryScript">
+				<Value><![CDATA[
+	select
+		M.MID,
+		M.Solt as [UUID],
+		M.Account,
+		M.NickName,
+		M.EMail,
+		M.Verify,
+		S.SSID,
+		S.Token,
+		DATEADD(ss, S.Expire, S.Since) as Expired
+	from Member M
+		inner join SystemSession S on M.MID = S.MID
+	where S.[Type] = 3]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[MID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[MID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[UUID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Solt]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[Account]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Account]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[NickName]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[NickName]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[EMail]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[EMail]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[Verify]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Member].[Verify]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[SSID]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[SSID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[Token]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[SystemSession].[Token]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[vd_VerifySession].[Expired]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="QueryDependencies">
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[NickName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[EMail]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Verify]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Since]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="280" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create   view vd_VerifySession&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[xp_createNewUser]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[
@@ -1307,6 +2109,250 @@ end]]></Value>
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE procedure [dbo].[xp_createNewUser]&#xD;&#xA;&#x9;@acc varchar(100),&#xD;&#xA;&#x9;@pwd varchar(100),&#xD;&#xA;&#x9;@email varchar(127),&#xD;&#xA;&#x9;@nickname nvarchar(60),&#xD;&#xA;&#x9;@mid int output&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[xp_EndpointLoginWithPassword]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+    set nocount on;
+    declare @trancount int;
+    set @trancount = @@trancount;
+    begin try
+        if @trancount = 0
+            begin transaction
+        else
+            save transaction xp_EndpointLoginWithPassword;
+
+        
+		declare @mid int = (select MID from Member where Account = @acc and [Password] = HASHBYTES('SHA2_256', @pwd + REPLACE(CONVERT(varchar(36), Solt), '-', '')))
+		if @mid is null
+			raiserror('Account or Password is not correct, please check again.', 18, 4)
+		else begin
+			select @isGrant = isnull(1, 0) from Grants where MID = @mid and AID = @aid
+
+			select @authcode = NEWID()
+			declare @ssid int = (select top 1 SSID from vd_LoginSession where MID = @mid and Expired >= GETDATE())
+			if @ssid is null begin
+				insert into SystemSession(Token, RefreshToken, Expire, MID, [Type])
+					values (NEWID(), NEWID(), 600, @mid, 1) -- set 10 minutes alive
+				set @ssid = SCOPE_IDENTITY()
+			end
+			insert into AuthCode(AID, SSID, AuthorizationCode)
+				values(@aid, @ssid, @authcode)
+		end
+
+
+        if @trancount = 0   
+            commit;
+    end try
+    begin catch
+        declare @message varchar(4000), @xstate int;
+        select @message = ERROR_MESSAGE(), @xstate = XACT_STATE();
+        if @xstate = -1
+            rollback;
+        if @xstate = 1 and @trancount = 0
+            rollback
+        if @xstate = 1 and @trancount > 0
+            rollback transaction usp_my_procedure_name;
+        raiserror (@message, 16, 1) ;
+    end catch   
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_EndpointLoginWithPassword].[@acc]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Password]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_EndpointLoginWithPassword].[@pwd]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_LoginSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_LoginSession].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_LoginSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_LoginSession].[Expired]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Grants]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_EndpointLoginWithPassword].[@isGrant]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Grants].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Grants].[AID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_EndpointLoginWithPassword].[@aid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_EndpointLoginWithPassword].[@authcode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[RefreshToken]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[AID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AuthCode].[AuthorizationCode]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_EndpointLoginWithPassword].[@acc]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_EndpointLoginWithPassword].[@pwd]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_EndpointLoginWithPassword].[@aid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_EndpointLoginWithPassword].[@authcode]">
+						<Property Name="IsOutput" Value="True" />
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_EndpointLoginWithPassword].[@isGrant]">
+						<Property Name="IsOutput" Value="True" />
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="6" />
+				<Property Name="Length" Value="1714" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;CREATE    procedure [dbo].[xp_EndpointLoginWithPassword]&#xD;&#xA;&#x9;@acc varchar(100),&#xD;&#xA;&#x9;@pwd varchar(100),&#xD;&#xA;&#x9;@aid int,&#xD;&#xA;&#x9;@authcode uniqueidentifier output,&#xD;&#xA;&#x9;@isGrant bit output&#xD;&#xA;as" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[xp_loginWithPassword]">
@@ -1715,6 +2761,139 @@ end]]></Value>
 				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;CREATE   procedure [dbo].[xp_logout]&#xD;&#xA;&#x9;@mid int,&#xD;&#xA;&#x9;@token uniqueidentifier,&#xD;&#xA;&#x9;@refreshtoken uniqueidentifier&#xD;&#xA;as" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[xp_MemberRenewForgetPassword]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ begin
+	if exists(select * from vd_ForgePasswordSession where UUID = @uuid and Token = @token and Expired >= GETDATE())begin
+		declare @newpwd binary(32) = (select HASHBYTES('SHA2_256', @newpassword + REPLACE(CONVERT(varchar(36), Solt), '-', '')) from Member where Solt = @uuid)
+		update Member
+			set [Password] = @newpwd
+			where Solt = @uuid
+		update SystemSession
+			set Expire = null
+			where Token = @token and [Type] = 2
+	end else
+		raiserror('Wrong or expired session', 18, 2)
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[binary]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberRenewForgetPassword].[@newpassword]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberRenewForgetPassword].[@uuid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession].[UUID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberRenewForgetPassword].[@token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession].[Expired]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Password]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberRenewForgetPassword].[@token]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberRenewForgetPassword].[@uuid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberRenewForgetPassword].[@newpassword]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="8" />
+				<Property Name="Length" Value="650" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;CREATE   procedure [dbo].[xp_MemberRenewForgetPassword]&#xD;&#xA;&#x9; @token uniqueidentifier,&#xD;&#xA;&#x9; @uuid uniqueidentifier,&#xD;&#xA;&#x9; @newpassword varchar(100)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[xp_MemberRenewPassword]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[ begin
@@ -1831,6 +3010,137 @@ end]]></Value>
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;CREATE   procedure [dbo].[xp_MemberRenewPassword]&#xD;&#xA;&#x9;@mid int,&#xD;&#xA;&#x9;@oldpassword varchar(100),&#xD;&#xA;&#x9;@newpassword varchar(100)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[xp_MemberSendVerify]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+	set nocount on;
+	set XACT_ABORT on
+    declare @trancount int;
+    set @trancount = @@trancount;
+    begin try
+        if @trancount = 0
+            begin transaction
+        else
+            save transaction xp_MemberSendVerify;
+
+		if exists(select 1 from Member where MID = @mid and Verify = 0) begin
+			if exists(select 1 from vd_VerifySession where MID = @mid)
+				update SystemSession
+					set Expire = null
+					where MID = @mid and [Type] = 3
+			declare @token uniqueidentifier = newid()
+			insert into SystemSession(Token, Expire, MID, [Type])
+				values(@token, 600, @mid, 3)
+			declare @ssid int = SCOPE_IDENTITY()
+			select * from vd_VerifySession where SSID = @ssid
+		end else
+			raiserror('This user had been verified', 18, 2)
+
+		if @trancount = 0   
+            commit;
+    end try
+    begin catch
+        declare @message varchar(4000), @xstate int;
+        select @message = ERROR_MESSAGE(), @xstate = XACT_STATE();
+        if @xstate = -1
+            rollback;
+        if @xstate = 1 and @trancount = 0
+            rollback
+        if @xstate = 1 and @trancount > 0
+            rollback transaction xp_MemberSendVerify;
+        raiserror (@message, 16, 1);
+    end catch 
+	set XACT_ABORT off
+	set nocount on;
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberSendVerify].[@mid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Verify]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[SSID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberSendVerify].[@mid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1331" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="create   procedure xp_MemberSendVerify&#xD;&#xA;&#x9;@mid int&#xD;&#xA;as" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[xp_MemberUpdate]">
@@ -1982,6 +3292,278 @@ end]]></Value>
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;CREATE   procedure [dbo].[xp_MemberUpdate]&#xD;&#xA;&#x9;@mid int,&#xD;&#xA;&#x9;@uuid uniqueidentifier,&#xD;&#xA;&#x9;@acc varchar(100),&#xD;&#xA;&#x9;@nickname varchar(60),&#xD;&#xA;&#x9;@email varchar(127)&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[xp_MemberVerify]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ begin
+	declare @ssid int = (select SSID from vd_VerifySession where UUID = @guid and Token = @token and Verify = 0)
+	if @ssid is null
+		raiserror('Session not exists', 18, 2)
+	else
+		if exists(select 1 from vd_VerifySession where SSID = @ssid and Expired >= getdate()) begin
+			update Member
+				set Verify = 1
+				where Solt = @guid
+			update SystemSession
+				set Expire = null
+				where SSID = @ssid
+		end
+			
+		else
+			raiserror('Verify Key is Expired', 18, 3)
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[SSID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[UUID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberVerify].[@guid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_MemberVerify].[@token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[Verify]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_VerifySession].[Expired]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Verify]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Solt]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[SSID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberVerify].[@token]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_MemberVerify].[@guid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="4" />
+				<Property Name="Length" Value="585" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;CREATE procedure [dbo].[xp_MemberVerify]&#xD;&#xA;&#x9;@token uniqueidentifier,&#xD;&#xA;&#x9;@guid uniqueidentifier&#xD;&#xA;as" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[xp_PasswordSendVerify]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+begin
+	set nocount on;
+	set XACT_ABORT on
+    declare @trancount int;
+    set @trancount = @@trancount;
+    begin try
+        if @trancount = 0
+            begin transaction
+        else
+            save transaction xp_MemberSendVerify;
+
+		declare @mid int = (select MID from MEmber where Account = @account and EMail = @email)
+		if @mid is null
+			raiserror('Account or EMail is wrong, please check and try again', 18, 2)
+		else begin
+			if exists(select 1 from vd_ForgePasswordSession where Account = @account)
+				update SystemSession
+					set Expire = null
+					where MID = @mid and [Type] = 2
+			declare @token uniqueidentifier = newid()
+			insert into SystemSession(Token, Expire, MID, [Type])
+				values(@token, 600, @mid, 2)
+			declare @ssid int = SCOPE_IDENTITY()
+			select * from vd_ForgePasswordSession where SSID = @ssid
+		end
+		if @trancount = 0   
+            commit;
+    end try
+    begin catch
+        declare @message varchar(4000), @xstate int;
+        select @message = ERROR_MESSAGE(), @xstate = XACT_STATE();
+        if @xstate = -1
+            rollback;
+        if @xstate = 1 and @trancount = 0
+            rollback
+        if @xstate = 1 and @trancount > 0
+            rollback transaction xp_MemberSendVerify;
+        raiserror (@message, 16, 1);
+    end catch 
+	set XACT_ABORT off
+	set nocount on;
+end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[Account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_PasswordSendVerify].[@account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Member].[EMail]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[xp_PasswordSendVerify].[@email]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession].[Account]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Expire]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[MID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SystemSession].[Token]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vd_ForgePasswordSession].[SSID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_PasswordSendVerify].[@email]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="128" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[xp_PasswordSendVerify].[@account]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="4" />
+				<Property Name="Length" Value="1474" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;create    procedure [dbo].[xp_PasswordSendVerify]&#xD;&#xA;&#x9;@email varchar(128),&#xD;&#xA;&#x9;@account varchar(100)&#xD;&#xA;as" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[xp_refreshToken]">

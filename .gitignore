@@ -1,0 +1,5 @@
+.vs/*
+Schema/bin/*
+Schema/obj/*
+Schema/匯入指令碼記錄/*
+"Schema/Import Schema Logs/*"

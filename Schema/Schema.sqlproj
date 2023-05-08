@@ -63,6 +63,7 @@
     <Folder Include="dbo\Views\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="Scripts\" />
+    <Folder Include="DefaultData" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Tag.sql" />
@@ -79,7 +80,6 @@
     <Build Include="dbo\Stored Procedures\xp_refreshToken.sql" />
     <Build Include="dbo\Stored Procedures\xp_MemberRenewPassword.sql" />
     <Build Include="dbo\Stored Procedures\xp_createNewUser.sql" />
-    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
     <Build Include="dbo\Views\vd_VerifySession.sql" />
     <Build Include="dbo\Views\vd_ForgePasswordSession.sql" />
     <Build Include="dbo\Stored Procedures\xp_PasswordSendVerify.sql" />
@@ -90,8 +90,12 @@
     <Build Include="dbo\Tables\AuthCode.sql" />
     <Build Include="dbo\Views\vd_AuthorizationCodeSession.sql" />
     <Build Include="dbo\Stored Procedures\xp_EndpointLoginWithPassword.sql" />
+    <None Include="DefaultData\InsertDefaultData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Schema.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>
